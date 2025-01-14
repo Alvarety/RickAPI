@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    margin: 30px;
+    background: rgb(126,126,126);
+    background: linear-gradient(90deg, rgba(126,126,126,1) 0%, rgba(214,214,214,1) 0%);
+}
+
+#resultado {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 30px 10px;
+    place-items: center;
+}
+
+header {
+    background-color: #f4f4f4;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+header h1 {
+    margin-left: 20px;
+}
+
+nav ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 50px;
+    margin-right: 20px;
+}
+  
+li {
+    margin: 0;
+}
+  
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+}
+
+button {
+    background: none;
+    border: none;
+    display: none;
+    cursor: pointer;
+    color: black;
+    font-size: 1.5em;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+nav button {
+    align-items: center;
+}
+
+button i {
+    pointer-events: none;
+}
+
+.card {
+    width: 20rem;
+}
+
+@media screen and (max-width: 1280px) {
+    #resultado {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        gap: 30px 10px;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    #resultado {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 30px 10px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    #resultado {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: auto;
+        gap: 30px 10px;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 200px;
+        height: 100%;
+        z-index: 999;
+        flex-direction: column;
+        padding-top: 50px;
+        align-items: center;
+        background-color: #8e8e8e;
+        color: #fff;
+        transition: right 0.3s ease;
+        text-align: center;
+    }
+
+    nav ul {
+        list-style: none; 
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        margin-right: 20px;
+    }
+      
+    a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    nav.visible {
+        opacity: 1;
+        visibility: visible;
+        right: 0;
+    }
+
+    nav ul {
+        margin: 20px 0;
+        font-size: 1.2rem;
+        padding-right: 20px;
+    }
+
+    nav button {
+        margin: 2px 0;
+        padding-right: 20px;    
+    }
+
+    .abrir-menu, .cerrar-menu {
+        display: block;
+    }
+}

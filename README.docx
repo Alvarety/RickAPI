@@ -1,0 +1,18 @@
+Esta es una API de la popular serie de animacion para adultos Rick & Morty.
+
+Sinopsis:
+Rick & Morty es una serie de animación de ciencia ficción que sigue las aventuras de un científico alcohólico y excéntrico, Rick Sanchez, y su nieto, Morty Smith, 
+a través de diversos universos y dimensiones paralelas. Rick es un genio brillante pero emocionalmente inestable que arrastra a Morty en sus arriesgadas y a menudo 
+peligrosas travesuras. Juntos viajan por el espacio, mundos alternativos y experimentan situaciones surrealistas, mientras enfrentan dilemas éticos y filosóficos.
+
+Explicación de la API:
+
+Tienes un Menú en el que puedes elegir tres opciones, Personajes, Episodios y Locaciones.
+Dependiendo de cual elijas podras ver, por ejemplo, si estas en el de personajes podras ver a Rick, Morty y a todos los mas de 800 personajes que tiene la franquicia.
+Y con los otros dos, me entiendes perfectamente.
+
+En pantallas mas pequeñas como telefonos te lo muestra en columnas de uno, esto hecho con media query responsive.
+Aparte tiene implementado un menu que cuando le das al botón se te abre y puedes elegir que ver desde ahi, eso hecho en JavaScript.
+
+Usando la API Oficial de Rick y Morty, usando una carta donde cargo la imagen y los datos de personaje desde la URL de la API.
+
