@@ -16,3 +16,10 @@ Aparte tiene implementado un menu que cuando le das al botón se te abre y puede
 
 Usando la API Oficial de Rick y Morty, usando una carta donde cargo la imagen y los datos de personaje desde la URL de la API.
 
+Actualización:
+
+Ahora tienes un buscador con el que puedes buscar el personaje que mas te guste, por ejemplo si te gusta Rick, podras ver todos los ricks que existen, no solo
+lo tienes implementado en la página de personajes, también en la de episodios y localizaciones.
+Cambie el fondo de la página, en vez de tener un fondo gris superfeo ahora tienes una imagen de Rick y Morty digna de fondo de pantalla.
+
+El header ahora tiene bordes y letras blancas para adecuarse al fondo oscuro de la página.

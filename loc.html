@@ -16,23 +16,24 @@
           <ul>
             <li><a href="index.html">Personajes</a></li>
             <li><a href="epi.html">Episodios</a></li>
-            <li><a href="loc.html">Locaciones</a></li>
+            <li><a href="loc.html">Localizaciones</a></li>
           </ul>
         </nav>
         <button class="abrir-menu" id="abrir"><i class="bi bi-list"></i></button>
       </header>
-        <h1>PAGINA
-        <select name="pagina" id="pagina" onchange="apiRick3(this.value)">
-            <script>
-                for (let i = 1; i <= 7; i++) {
-                    document.write(`<option value="${i}">${i}</option>`);
-                }
-            </script>
-        </select></h1>
+
+      <section>
+        <div id="search-wrapper">
+          <label for="search" class="search-label">Buscar Localizaciones:</label>
+          <div class="search-container">
+            <input type="text" id="search" class="search-input" placeholder="Escribe el nombre de un personaje...">
+            <span class="search-icon">🔍</span>
+          </div>
+        </div>
         <div id="resultado">
             
         </div>
-
-        <script src="javascript/appLoc.js"></script>
+      </section>
+      <script src="javascript/appLoc.js"></script>
     </body>
 </html>
