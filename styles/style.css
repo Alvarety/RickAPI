@@ -44,6 +44,11 @@ body {
     transition: border-color 0.3s ease;
 }
 
+.texto {
+    color: white;
+    text-align: center;
+}
+
 .search-input:focus {
     border-color: #007BFF;
 }

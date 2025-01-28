@@ -29,7 +29,7 @@ const renderResults = (results) => {
     divRes.innerHTML = '';
 
     if (!results || results.length === 0) {
-        divRes.innerHTML = '<p>No se encontraron personajes.</p>';
+        divRes.innerHTML = '<p class="texto">No se encontraron personajes.</p>';
         return;
     }
 
