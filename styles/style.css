@@ -8,7 +8,7 @@ body {
     text-align: center;
     font-family: 'Roboto', sans-serif;
     margin: 30px;
-    background-image: url("/images/rick_fondo.JPG");
+    background-image: url("../images/rick_fondo.jpg");
     background-size: cover;
     background-attachment: fixed;
     background-color: grey;
