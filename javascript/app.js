@@ -2,7 +2,7 @@ let abortController = null;
 let currentPage = 1;
 let queryActual = "";
 let cargando = false;
-const totalPages = 42;
+const totalPages = 40;
 
 const apiRick = async (pagina, query = "") => {
     if (abortController) {
