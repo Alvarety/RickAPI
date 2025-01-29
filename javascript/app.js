@@ -2,7 +2,7 @@ let abortController = null;
 let currentPage = 1;
 let queryActual = "";
 let cargando = false;
-const totalPages = 40;
+const totalPages = 42;
 
 const apiRick = async (pagina, query = "") => {
     if (abortController) {
@@ -15,10 +15,18 @@ const apiRick = async (pagina, query = "") => {
     try {
         let url = `https://rickandmortyapi.com/api/character/?page=${pagina}&name=${query}`;
         const api = await fetch(url, { signal });
+
+        if (!api.ok) {
+            throw new Error(`HTTP error! Status: ${api.status}`);
+        }
+
         const data = await api.json();
 
         if (data.error) {
-            renderError("No se encontraron personajes.");
+            if (pagina === 1) {
+                renderError("No se encontraron personajes.");
+            }
+            cargando = false;
             return;
         }
 
@@ -30,7 +38,7 @@ const apiRick = async (pagina, query = "") => {
             console.log("Solicitud cancelada");
         } else {
             console.error("Error en la solicitud:", error);
-            renderError("Algo salió mal. Intenta nuevamente.");
+            if (pagina === 1) renderError("Algo salió mal. Intenta nuevamente.");
         }
         cargando = false;
     }
@@ -40,6 +48,8 @@ const renderResults = (results, limpiar = false) => {
     const divRes = document.querySelector("#resultado");
 
     if (limpiar) divRes.innerHTML = "";
+
+    if (!results || results.length === 0) return;
 
     results.forEach((item) => {
         const divItem = document.createElement("div");
