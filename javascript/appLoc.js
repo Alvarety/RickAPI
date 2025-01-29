@@ -1,6 +1,10 @@
 let abortController = null;
+let currentPage = 1;
+let queryActual = "";
+let cargando = false;
+const totalPages = 7;
 
-const apiRick3 = async (pagina, query = "") => {
+const apiRick = async (pagina, query = "") => {
     if (abortController) {
         abortController.abort();
     }
@@ -13,28 +17,32 @@ const apiRick3 = async (pagina, query = "") => {
         const api = await fetch(url, { signal });
         const data = await api.json();
 
-        renderResults(data.results);
+        if (data.error) {
+            renderError("No se encontraron personajes.");
+            return;
+        }
+
+        renderResults(data.results, pagina === 1);
+        cargando = false;
+
     } catch (error) {
         if (error.name === "AbortError") {
             console.log("Solicitud cancelada");
         } else {
             console.error("Error en la solicitud:", error);
-            renderError("Algo salió mal. Por favor, intenta nuevamente.");
+            renderError("Algo salió mal. Intenta nuevamente.");
         }
+        cargando = false;
     }
 };
 
-const renderResults = (results) => {
-    const divRes = document.querySelector('#resultado');
-    divRes.innerHTML = '';
+const renderResults = (results, limpiar = false) => {
+    const divRes = document.querySelector("#resultado");
 
-    if (!results || results.length === 0) {
-        divRes.innerHTML = '<p>No se encontraron localizaciones.</p>';
-        return;
-    }
+    if (limpiar) divRes.innerHTML = "";
 
-    results.map(item => {
-        const divItem = document.createElement('div');
+    results.forEach((item) => {
+        const divItem = document.createElement("div");
         divItem.innerHTML = `
         <div class="card">
             <div class="card-body">
@@ -48,19 +56,12 @@ const renderResults = (results) => {
 };
 
 const renderError = (message) => {
-    const divRes = document.querySelector('#resultado');
+    const divRes = document.querySelector("#resultado");
     divRes.innerHTML = `<p class="error">${message}</p>`;
 };
 
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("search");
-    let currentPage = 1;
-
-    searchInput.addEventListener("input", (event) => {
-        const query = event.target.value;
-        apiRick3(currentPage, query);
-    });
-
     const abrir = document.getElementById("abrir");
     const cerrar = document.getElementById("cerrar");
     const nav = document.getElementById("nav");
@@ -68,5 +69,23 @@ document.addEventListener("DOMContentLoaded", function () {
     abrir.addEventListener("click", () => nav.classList.add("visible"));
     cerrar.addEventListener("click", () => nav.classList.remove("visible"));
 
-    apiRick3(currentPage);
+    searchInput.addEventListener("input", (event) => {
+        queryActual = event.target.value;
+        currentPage = 1;
+        apiRick(currentPage, queryActual);
+    });
+
+    apiRick(currentPage);
+
+    window.addEventListener("scroll", () => {
+        if (
+            !cargando &&
+            currentPage < totalPages &&
+            window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 200
+        ) {
+            cargando = true;
+            currentPage++;
+            apiRick(currentPage, queryActual);
+        }
+    });
 });
