@@ -23,3 +23,5 @@ lo tienes implementado en la página de personajes, también en la de episodios 
 Cambie el fondo de la página, en vez de tener un fondo gris superfeo ahora tienes una imagen de Rick y Morty digna de fondo de pantalla.
 
 El header ahora tiene bordes y letras blancas para adecuarse al fondo oscuro de la página.
+Tambien puedes hacer scroll infinito en todas las páginas de la API.
+Sobretodo al poner lo que quieras en el buscador.
